@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AndroidRecipes</string>
+    <string name="retrofit_get_all">GET ALL</string>
+    <string name="retrofit_get_by_id">GET BY ID</string>
+    <string name="retrofit_post">POST</string>
+    <string name="retrofit_update">UPDATE</string>
+    <string name="retrofit_delete">DELETE</string>
 </resources>

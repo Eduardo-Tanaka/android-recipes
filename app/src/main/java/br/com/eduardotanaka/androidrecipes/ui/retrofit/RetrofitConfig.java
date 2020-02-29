@@ -1,6 +1,10 @@
 package br.com.eduardotanaka.androidrecipes.ui.retrofit;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import br.com.eduardotanaka.androidrecipes.BuildConfig;
+import br.com.eduardotanaka.androidrecipes.ui.retrofit.service.MockApiService;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -8,12 +12,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitConfig {
 
-    private static RetrofitConfig instance;
-    private static final String BASE_URL = "http(s)://5e25087e43dea60014404938.mockapi.io/api/";
+    private static RetrofitConfig instance = null;
+    private static final String BASE_URL = "https://5e25087e43dea60014404938.mockapi.io/api/";
     private Retrofit retrofit;
     private OkHttpClient client;
 
-    public static RetrofitConfig getInstance() {
+    // One of the ways to make the singleton code thread safe is by making the method getInstance() a synchronized one
+    public static synchronized RetrofitConfig getInstance() {
         if (instance == null) {
             instance = new RetrofitConfig();
         }
@@ -29,14 +34,24 @@ public class RetrofitConfig {
         if (BuildConfig.DEBUG) {
             okHttpBuilder.addInterceptor(loggingInterceptor);
         }
-        client = okHttpBuilder.build();
+        client = okHttpBuilder
+                //.readTimeout(15, TimeUnit.SECONDS)
+                //.connectTimeout(15, TimeUnit.SECONDS)
+                .build();
+
+        // serialize Date from String
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                .create();
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(client)
                 .build();
     }
 
-
+    public MockApiService getMockApiService() {
+        return retrofit.create(MockApiService.class);
+    }
 }
