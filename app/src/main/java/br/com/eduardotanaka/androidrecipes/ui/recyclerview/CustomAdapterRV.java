@@ -1,5 +1,6 @@
 package br.com.eduardotanaka.androidrecipes.ui.recyclerview;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +19,11 @@ public class CustomAdapterRV extends RecyclerView.Adapter {
 
     private List<MockApi> mockApiList;
     private static ItemClickListener itemClickListener;
+    private Context context;
 
-    public CustomAdapterRV(ItemClickListener itemClickListener) {
+    public CustomAdapterRV(ItemClickListener itemClickListener, Context context) {
         this.itemClickListener = itemClickListener;
+        this.context = context;
     }
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -77,5 +80,14 @@ public class CustomAdapterRV extends RecyclerView.Adapter {
 
     public interface ItemClickListener {
         void onItemClick(MockApi mockApi);
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void deleteItem(int position) {
+        this.mockApiList.remove(position);
+        notifyItemRemoved(position);
     }
 }

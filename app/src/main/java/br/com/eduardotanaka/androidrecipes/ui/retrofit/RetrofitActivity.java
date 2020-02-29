@@ -2,6 +2,7 @@ package br.com.eduardotanaka.androidrecipes.ui.retrofit;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ import java.util.List;
 
 import br.com.eduardotanaka.androidrecipes.R;
 import br.com.eduardotanaka.androidrecipes.ui.recyclerview.CustomAdapterRV;
+import br.com.eduardotanaka.androidrecipes.ui.recyclerview.SwipeController;
 import br.com.eduardotanaka.androidrecipes.ui.retrofit.model.MockApi;
 import br.com.eduardotanaka.androidrecipes.ui.retrofit.service.MockApiService;
 import retrofit2.Call;
@@ -37,7 +39,7 @@ public class RetrofitActivity extends AppCompatActivity implements CustomAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrofit);
 
-        customAdapterRV = new CustomAdapterRV(this);
+        customAdapterRV = new CustomAdapterRV(this, this);
         customAdapterRV.setData(new ArrayList<>());
         recyclerView = findViewById(R.id.recyclerview);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
@@ -45,6 +47,9 @@ public class RetrofitActivity extends AppCompatActivity implements CustomAdapter
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(customAdapterRV);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeController(customAdapterRV));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
     public void getAll(View view) {
