@@ -1,15 +1,15 @@
 package br.com.eduardotanaka.androidrecipes.ui.retrofit;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,15 +24,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static br.com.eduardotanaka.androidrecipes.ui.retrofit.RetrofitConfig.getInstance;
-
 public class RetrofitActivity extends AppCompatActivity implements CustomAdapterRV.ItemClickListener {
 
     private final String TAG = RetrofitActivity.class.getName();
     private String id;
     private RecyclerView recyclerView;
     private CustomAdapterRV customAdapterRV;
-    private List<MockApi> lista;
+    private List<MockApi> lista = new ArrayList<>();
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,12 +114,12 @@ public class RetrofitActivity extends AppCompatActivity implements CustomAdapter
             public void onResponse(Call<MockApi> call, Response<MockApi> response) {
                 if (response.isSuccessful()) {
                     MockApi mockApi = response.body();
-                    id = mockApi.getId();
                     Log.i(TAG, mockApi.toString());
 
+                    id = mockApi.getId();
                     lista.add(mockApi);
                     customAdapterRV.setData(lista);
-                    customAdapterRV.notifyItemInserted(Integer.valueOf(id) - 1);
+                    customAdapterRV.notifyItemInserted(lista.size());
                 } else {
                     Toast.makeText(RetrofitActivity.this, "ERRO POST", Toast.LENGTH_SHORT).show();
                 }
@@ -147,9 +146,9 @@ public class RetrofitActivity extends AppCompatActivity implements CustomAdapter
                     MockApi mockApi = response.body();
                     Log.i(TAG, mockApi.toString());
 
-                    lista.set(Integer.valueOf(id) - 1, mockApi);
+                    lista.set(lista.size() - 1, mockApi);
                     customAdapterRV.setData(lista);
-                    customAdapterRV.notifyItemChanged(Integer.valueOf(id) - 1);
+                    customAdapterRV.notifyItemChanged(lista.indexOf(mockApi));
                 } else {
                     Toast.makeText(RetrofitActivity.this, "ERRO UPDATE", Toast.LENGTH_SHORT).show();
                 }
@@ -172,9 +171,11 @@ public class RetrofitActivity extends AppCompatActivity implements CustomAdapter
                     MockApi mockApi = response.body();
                     Log.i(TAG, mockApi.toString());
 
-                    lista.remove(Integer.valueOf(id) -1);
+                    lista.remove(position);
                     customAdapterRV.setData(lista);
-                    customAdapterRV.notifyItemRemoved(Integer.valueOf(id) - 1);
+                    customAdapterRV.notifyItemRemoved(position);
+
+                    recyclerView.requestLayout();
                 } else {
                     Toast.makeText(RetrofitActivity.this, "ERRO DELETE", Toast.LENGTH_SHORT).show();
                 }
@@ -190,5 +191,12 @@ public class RetrofitActivity extends AppCompatActivity implements CustomAdapter
     @Override
     public void onItemClick(MockApi mockApi) {
         Toast.makeText(this, mockApi.toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDeleteSwipe(MockApi mockApi, int position) {
+        id = mockApi.getId();
+        this.position = position;
+        delete(null);
     }
 }

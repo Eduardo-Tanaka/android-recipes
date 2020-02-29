@@ -80,6 +80,7 @@ public class CustomAdapterRV extends RecyclerView.Adapter {
 
     public interface ItemClickListener {
         void onItemClick(MockApi mockApi);
+        void onDeleteSwipe(MockApi mockApi, int position);
     }
 
     public Context getContext() {
@@ -87,7 +88,6 @@ public class CustomAdapterRV extends RecyclerView.Adapter {
     }
 
     public void deleteItem(int position) {
-        this.mockApiList.remove(position);
-        notifyItemRemoved(position);
+        itemClickListener.onDeleteSwipe(this.mockApiList.get(position), position);
     }
 }
