@@ -1,64 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.retrofit.RetrofitActivity">
 
-    <Button
-        android:id="@+id/retrofit_get_all"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/retrofit_get_all"
-        android:onClick="getAll"
-        android:layout_margin="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/retrofit_get_by_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/retrofit_get_by_id"
-        android:onClick="getById"
-        android:layout_margin="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/retrofit_get_all" />
+        <Button
+            android:id="@+id/retrofit_get_all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/retrofit_get_all"
+            android:onClick="getAll"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/retrofit_post"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/retrofit_post"
-        android:onClick="post"
-        android:layout_margin="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/retrofit_get_by_id" />
+        <Button
+            android:id="@+id/retrofit_get_by_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/retrofit_get_by_id"
+            android:onClick="getById"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/retrofit_get_all" />
 
-    <Button
-        android:id="@+id/retrofit_update"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/retrofit_update"
-        android:onClick="update"
-        android:layout_margin="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/retrofit_post" />
+        <Button
+            android:id="@+id/retrofit_post"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/retrofit_post"
+            android:onClick="post"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/retrofit_get_by_id" />
 
-    <Button
-        android:id="@+id/retrofit_delete"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/retrofit_delete"
-        android:onClick="delete"
-        android:layout_margin="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/retrofit_update" />
+        <Button
+            android:id="@+id/retrofit_update"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/retrofit_update"
+            android:onClick="update"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/retrofit_post" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/retrofit_delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/retrofit_delete"
+            android:onClick="delete"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/retrofit_update" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            tools:listitem="@layout/layout_recyclerview"
+            tools:itemCount="6"
+            android:scrollbars="none"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:paddingBottom="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/retrofit_delete" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
