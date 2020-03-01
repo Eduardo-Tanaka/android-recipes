@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="br.com.eduardotanaka.androidrecipes.ui.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_recyclerViewActivity"
+            app:destination="@id/recyclerViewActivity"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_startFragment_to_retrofitActivity"
+            app:destination="@id/retrofitFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <activity
+        android:id="@+id/recyclerViewActivity"
+        android:name="br.com.eduardotanaka.androidrecipes.ui.recyclerview.RecyclerViewActivity"
+        android:label="activity_recycler_view"
+        tools:layout="@layout/activity_recycler_view" />
+
+    <fragment
+        android:id="@+id/detailMockApiFragment"
+        android:name="br.com.eduardotanaka.androidrecipes.ui.recyclerview.DetailMockApiFragment"
+        android:label="fragment_detail_mock_api"
+        tools:layout="@layout/layout_recyclerview" >
+        <argument
+            android:name="teste"
+            app:argType="br.com.eduardotanaka.androidrecipes.ui.retrofit.model.MockApi" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/retrofitFragment"
+        android:name="br.com.eduardotanaka.androidrecipes.ui.retrofit.RetrofitActivity"
+        android:label="fragment_retrofit"
+        tools:layout="@layout/activity_retrofit">
+        <action
+            android:id="@+id/action_retrofitActivity_to_detailMockApiFragment"
+            app:destination="@id/detailMockApiFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+</navigation>

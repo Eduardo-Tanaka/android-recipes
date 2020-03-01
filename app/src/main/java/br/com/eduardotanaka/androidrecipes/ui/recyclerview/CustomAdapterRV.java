@@ -52,7 +52,7 @@ public class CustomAdapterRV extends RecyclerView.Adapter {
         @Override
         public void onClick(View view) {
             if (itemClickListener != null) {
-                itemClickListener.onItemClick(mockApiList.get(getAdapterPosition()));
+                itemClickListener.onItemClick(view, mockApiList.get(getAdapterPosition()));
             }
         }
     }
@@ -79,7 +79,7 @@ public class CustomAdapterRV extends RecyclerView.Adapter {
     }
 
     public interface ItemClickListener {
-        void onItemClick(MockApi mockApi);
+        void onItemClick(View view, MockApi mockApi);
         void onDeleteSwipe(MockApi mockApi, int position);
     }
 

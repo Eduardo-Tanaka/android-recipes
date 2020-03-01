@@ -11,9 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.recyclerview.RecyclerViewActivity"></activity>
-        <activity android:name=".ui.retrofit.RetrofitActivity" />
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.recyclerview.RecyclerViewActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

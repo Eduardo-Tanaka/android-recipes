@@ -18,12 +18,4 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
-    public void retrofitClick(View view) {
-        startActivity(new Intent(this, RetrofitActivity.class));
-    }
-
-    public void recyclewviewClick(View view) {
-        startActivity(new Intent(this, RecyclerViewActivity.class));
-    }
 }
