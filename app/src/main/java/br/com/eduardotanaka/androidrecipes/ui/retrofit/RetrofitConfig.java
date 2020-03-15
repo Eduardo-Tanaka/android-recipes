@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import br.com.eduardotanaka.androidrecipes.BuildConfig;
-import br.com.eduardotanaka.androidrecipes.ui.retrofit.service.MockApiService;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -51,7 +50,7 @@ public class RetrofitConfig {
                 .build();
     }
 
-    public MockApiService getMockApiService() {
-        return retrofit.create(MockApiService.class);
+    public <T> T getService(Class<T> serviceClass) {
+        return retrofit.create(serviceClass);
     }
 }
