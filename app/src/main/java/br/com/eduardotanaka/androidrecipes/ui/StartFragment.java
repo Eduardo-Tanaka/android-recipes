@@ -1,36 +1,33 @@
 package br.com.eduardotanaka.androidrecipes.ui;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import br.com.eduardotanaka.androidrecipes.R;
-import br.com.eduardotanaka.androidrecipes.ui.recyclerview.RecyclerViewActivity;
-import br.com.eduardotanaka.androidrecipes.ui.retrofit.RetrofitActivity;
+import br.com.eduardotanaka.androidrecipes.util.SharedPreferencesUtil;
 
-public class StartFragment extends Fragment {
+public class StartFragment extends BaseFragment {
 
     private Button btnRetrofit;
     private Button btnRecyclerview;
 
     public StartFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override

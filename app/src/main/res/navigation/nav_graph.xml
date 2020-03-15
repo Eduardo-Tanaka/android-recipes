@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/startFragment"
         android:name="br.com.eduardotanaka.androidrecipes.ui.StartFragment"
-        android:label="fragment_start"
-        tools:layout="@layout/fragment_start" >
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_start">
         <action
             android:id="@+id/action_startFragment_to_recyclerViewActivity"
             app:destination="@id/recyclerViewActivity"
@@ -29,14 +29,14 @@
     <activity
         android:id="@+id/recyclerViewActivity"
         android:name="br.com.eduardotanaka.androidrecipes.ui.recyclerview.RecyclerViewActivity"
-        android:label="activity_recycler_view"
+        android:label="RecyclerView"
         tools:layout="@layout/activity_recycler_view" />
 
     <fragment
         android:id="@+id/detailMockApiFragment"
         android:name="br.com.eduardotanaka.androidrecipes.ui.recyclerview.DetailMockApiFragment"
-        android:label="fragment_detail_mock_api"
-        tools:layout="@layout/layout_recyclerview" >
+        android:label="Detalhes"
+        tools:layout="@layout/layout_recyclerview">
         <argument
             android:name="teste"
             app:argType="br.com.eduardotanaka.androidrecipes.ui.retrofit.model.MockApi" />
@@ -44,8 +44,8 @@
 
     <fragment
         android:id="@+id/retrofitFragment"
-        android:name="br.com.eduardotanaka.androidrecipes.ui.retrofit.RetrofitActivity"
-        android:label="fragment_retrofit"
+        android:name="br.com.eduardotanaka.androidrecipes.ui.retrofit.RetrofitFragment"
+        android:label="Retrofit"
         tools:layout="@layout/activity_retrofit">
         <action
             android:id="@+id/action_retrofitActivity_to_detailMockApiFragment"
@@ -56,5 +56,31 @@
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="br.com.eduardotanaka.androidrecipes.ui.login.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_start_fragment"
+            app:destination="@id/startFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit"
+            app:popUpTo="@+id/login"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_login"
+        app:destination="@id/login"
+        app:enterAnim="@anim/fragment_fade_enter"
+        app:exitAnim="@anim/fragment_fade_exit"
+        app:launchSingleTop="false"
+        app:popEnterAnim="@anim/fragment_close_enter"
+        app:popExitAnim="@anim/fragment_close_exit"
+        app:popUpTo="@+id/startFragment"
+        app:popUpToInclusive="true" />
 
 </navigation>

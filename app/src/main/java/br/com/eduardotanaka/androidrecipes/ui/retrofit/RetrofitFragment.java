@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -22,8 +20,8 @@ import java.util.Date;
 import java.util.List;
 
 import br.com.eduardotanaka.androidrecipes.R;
+import br.com.eduardotanaka.androidrecipes.ui.BaseFragment;
 import br.com.eduardotanaka.androidrecipes.ui.recyclerview.CustomAdapterRV;
-import br.com.eduardotanaka.androidrecipes.ui.recyclerview.DetailMockApiFragment;
 import br.com.eduardotanaka.androidrecipes.ui.recyclerview.SwipeController;
 import br.com.eduardotanaka.androidrecipes.ui.retrofit.model.MockApi;
 import br.com.eduardotanaka.androidrecipes.ui.retrofit.service.MockApiService;
@@ -31,19 +29,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RetrofitActivity extends Fragment implements CustomAdapterRV.ItemClickListener {
+public class RetrofitFragment extends BaseFragment implements CustomAdapterRV.ItemClickListener {
 
-    private final String TAG = RetrofitActivity.class.getName();
+    private final String TAG = RetrofitFragment.class.getName();
     private String id;
     private RecyclerView recyclerView;
     private CustomAdapterRV customAdapterRV;
     private List<MockApi> lista = new ArrayList<>();
     private int position;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,7 +46,7 @@ public class RetrofitActivity extends Fragment implements CustomAdapterRV.ItemCl
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        customAdapterRV = new CustomAdapterRV(RetrofitActivity.this, getContext());
+        customAdapterRV = new CustomAdapterRV(RetrofitFragment.this, getContext());
         customAdapterRV.setData(new ArrayList<>());
         recyclerView = view.findViewById(R.id.recyclerview);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
@@ -228,7 +221,7 @@ public class RetrofitActivity extends Fragment implements CustomAdapterRV.ItemCl
             App:
             apply plugin: "androidx.navigation.safeargs
         */
-        RetrofitActivityDirections.ActionRetrofitActivityToDetailMockApiFragment action = RetrofitActivityDirections.actionRetrofitActivityToDetailMockApiFragment(mockApi);
+        RetrofitFragmentDirections.ActionRetrofitActivityToDetailMockApiFragment action = RetrofitFragmentDirections.actionRetrofitActivityToDetailMockApiFragment(mockApi);
         Navigation.findNavController(view).navigate(action);
     }
 
