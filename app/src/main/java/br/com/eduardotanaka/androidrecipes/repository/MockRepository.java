@@ -7,9 +7,9 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.Date;
 import java.util.List;
 
-import br.com.eduardotanaka.androidrecipes.ui.retrofit.RetrofitConfig;
-import br.com.eduardotanaka.androidrecipes.ui.retrofit.model.MockApi;
-import br.com.eduardotanaka.androidrecipes.ui.retrofit.service.MockApiService;
+import br.com.eduardotanaka.androidrecipes.data.retrofit.RetrofitConfig;
+import br.com.eduardotanaka.androidrecipes.data.model.MockApi;
+import br.com.eduardotanaka.androidrecipes.data.retrofit.service.MockApiService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

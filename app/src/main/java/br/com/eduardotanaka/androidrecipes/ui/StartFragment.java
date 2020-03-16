@@ -1,30 +1,21 @@
 package br.com.eduardotanaka.androidrecipes.ui;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.Nullable;
+import androidx.navigation.Navigation;
 import br.com.eduardotanaka.androidrecipes.R;
-import br.com.eduardotanaka.androidrecipes.util.SharedPreferencesUtil;
 
 public class StartFragment extends BaseFragment {
 
     private Button btnRetrofit;
     private Button btnRecyclerview;
+    private Button btnPagedList;
 
     public StartFragment() {
         // Required empty public constructor
@@ -43,6 +34,9 @@ public class StartFragment extends BaseFragment {
 
         btnRecyclerview = view.findViewById(R.id.btnRecyclerview);
         btnRecyclerview.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_startFragment_to_recyclerViewActivity));
+
+        btnPagedList = view.findViewById(R.id.btnPagedList);
+        btnPagedList.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_startFragment_to_pagedListFragment));
     }
 
     @Override

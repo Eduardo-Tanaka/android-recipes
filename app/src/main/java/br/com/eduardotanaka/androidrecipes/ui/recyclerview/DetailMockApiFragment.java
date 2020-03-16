@@ -10,10 +10,9 @@ import android.widget.TextView;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
-
 import br.com.eduardotanaka.androidrecipes.R;
+import br.com.eduardotanaka.androidrecipes.data.model.MockApi;
 import br.com.eduardotanaka.androidrecipes.ui.BaseFragment;
-import br.com.eduardotanaka.androidrecipes.ui.retrofit.model.MockApi;
 
 public class DetailMockApiFragment extends BaseFragment {
 

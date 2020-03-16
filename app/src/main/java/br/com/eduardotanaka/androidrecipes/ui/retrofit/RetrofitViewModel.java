@@ -1,13 +1,12 @@
 package br.com.eduardotanaka.androidrecipes.ui.retrofit;
 
+import java.util.List;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
-import java.util.List;
-
+import br.com.eduardotanaka.androidrecipes.data.model.MockApi;
 import br.com.eduardotanaka.androidrecipes.repository.MockRepository;
-import br.com.eduardotanaka.androidrecipes.ui.retrofit.model.MockApi;
 
 public class RetrofitViewModel extends ViewModel {
 

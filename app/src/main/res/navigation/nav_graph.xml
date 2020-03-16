@@ -24,6 +24,13 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_startFragment_to_pagedListFragment"
+            app:destination="@id/pagedListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"  />
     </fragment>
 
     <activity
@@ -39,7 +46,7 @@
         tools:layout="@layout/layout_recyclerview">
         <argument
             android:name="teste"
-            app:argType="br.com.eduardotanaka.androidrecipes.ui.retrofit.model.MockApi" />
+            app:argType="br.com.eduardotanaka.androidrecipes.data.model.MockApi" />
     </fragment>
 
     <fragment
@@ -82,5 +89,10 @@
         app:popExitAnim="@anim/fragment_close_exit"
         app:popUpTo="@+id/startFragment"
         app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/pagedListFragment"
+        android:name="br.com.eduardotanaka.androidrecipes.ui.pagedlist.PagedListFragment"
+        android:label="PagedListFragment"
+        tools:layout="@layout/activity_recycler_view" />
 
 </navigation>

@@ -6,15 +6,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import br.com.eduardotanaka.androidrecipes.R;
-import br.com.eduardotanaka.androidrecipes.ui.retrofit.model.MockApi;
+import br.com.eduardotanaka.androidrecipes.data.model.MockApi;
 
 public class CustomHorizontalAdapterRV extends RecyclerView.Adapter {
 

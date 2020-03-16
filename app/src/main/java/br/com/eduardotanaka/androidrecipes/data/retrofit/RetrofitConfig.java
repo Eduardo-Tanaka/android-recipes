@@ -1,4 +1,4 @@
-package br.com.eduardotanaka.androidrecipes.ui.retrofit;
+package br.com.eduardotanaka.androidrecipes.data.retrofit;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

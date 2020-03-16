@@ -1,4 +1,4 @@
-package br.com.eduardotanaka.androidrecipes.ui.retrofit.model;
+package br.com.eduardotanaka.androidrecipes.data.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,6 +6,10 @@ import android.os.Parcelable;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.Objects;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 
 public class MockApi implements Parcelable {
 
@@ -95,4 +99,32 @@ public class MockApi implements Parcelable {
                 ", avatar='" + avatar + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MockApi mockApi = (MockApi) o;
+        return Objects.equals(id, mockApi.id) &&
+                Objects.equals(createdAt, mockApi.createdAt) &&
+                Objects.equals(name, mockApi.name) &&
+                Objects.equals(avatar, mockApi.avatar);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, createdAt, name, avatar);
+    }
+
+    public static DiffUtil.ItemCallback<MockApi> DIFF_CALLBACK = new DiffUtil.ItemCallback<MockApi>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull MockApi oldItem, @NonNull MockApi newItem) {
+            return oldItem.getId().equals(newItem.getId());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull MockApi oldItem, @NonNull MockApi newItem) {
+            return oldItem.equals(newItem);
+        }
+    };
 }

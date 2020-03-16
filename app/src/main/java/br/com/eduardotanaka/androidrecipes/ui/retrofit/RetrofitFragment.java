@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -14,15 +17,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import br.com.eduardotanaka.androidrecipes.R;
+import br.com.eduardotanaka.androidrecipes.data.model.MockApi;
 import br.com.eduardotanaka.androidrecipes.ui.BaseFragment;
 import br.com.eduardotanaka.androidrecipes.ui.recyclerview.CustomAdapterRV;
 import br.com.eduardotanaka.androidrecipes.ui.recyclerview.SwipeController;
-import br.com.eduardotanaka.androidrecipes.ui.retrofit.model.MockApi;
 
 public class RetrofitFragment extends BaseFragment implements CustomAdapterRV.ItemClickListener {
 

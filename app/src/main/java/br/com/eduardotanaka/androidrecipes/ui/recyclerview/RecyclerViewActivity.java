@@ -1,22 +1,19 @@
 package br.com.eduardotanaka.androidrecipes.ui.recyclerview;
 
+import android.os.Bundle;
+
+import com.google.gson.Gson;
+
+import java.util.Arrays;
+import java.util.List;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
-
-import android.os.Bundle;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import br.com.eduardotanaka.androidrecipes.R;
-import br.com.eduardotanaka.androidrecipes.ui.retrofit.model.MockApi;
+import br.com.eduardotanaka.androidrecipes.data.model.MockApi;
 
 public class RecyclerViewActivity extends AppCompatActivity {
 

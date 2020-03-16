@@ -1,8 +1,8 @@
-package br.com.eduardotanaka.androidrecipes.ui.retrofit.service;
+package br.com.eduardotanaka.androidrecipes.data.retrofit.service;
 
 import java.util.List;
 
-import br.com.eduardotanaka.androidrecipes.ui.retrofit.model.MockApi;
+import br.com.eduardotanaka.androidrecipes.data.model.MockApi;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -10,6 +10,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface MockApiService {
 
@@ -27,4 +28,7 @@ public interface MockApiService {
 
     @DELETE("retrofit-teste/{id}")
     Call<MockApi> delete(@Path("id") String id);
+
+    @GET("retrofit-teste?limit=10")
+    Call<List<MockApi>> getPaginated(@Query("page") Integer id);
 }

@@ -7,13 +7,12 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import br.com.eduardotanaka.androidrecipes.R;
-import br.com.eduardotanaka.androidrecipes.ui.retrofit.model.MockApi;
+import br.com.eduardotanaka.androidrecipes.data.model.MockApi;
 
 public class CustomAdapterRV extends RecyclerView.Adapter {
 

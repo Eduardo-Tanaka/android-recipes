@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
-
 import br.com.eduardotanaka.androidrecipes.R;
 import br.com.eduardotanaka.androidrecipes.util.SharedPreferencesUtil;
 
