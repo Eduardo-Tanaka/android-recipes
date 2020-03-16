@@ -29,6 +29,16 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
+                android:id="@+id/btnLogarBiometric"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Logar Biometria"
+                android:layout_margin="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnLogar"  />
+
+            <Button
                 android:id="@+id/btnCadastrar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -36,7 +46,7 @@
                 android:layout_margin="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btnLogar" />
+                app:layout_constraintTop_toBottomOf="@id/btnLogarBiometric" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
